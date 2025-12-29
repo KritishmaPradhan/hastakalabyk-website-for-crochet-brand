@@ -115,7 +115,6 @@ body {
 .section {
     padding: 5rem 10%;
 }
-
 .section h2 {
     text-align: center;
     font-size: 2.5rem;
@@ -146,8 +145,10 @@ body {
 }
 
 .about-text {
+    padding: 2rem;
     flex: 1;
     min-width: 300px;
+    font-size: 20px;
 }
 
 .about-text p {
@@ -163,22 +164,37 @@ body {
 
 .about-image img {
     max-width: 100%;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    height: 450px;
+    border-radius: 50%;
+    box-shadow: 0 15px 15px rgba(237, 108, 213, 0.2);
 }
 
 /* Gallery Section */
 .gallery {
-    background-color: #f9f9f9;
+    background-color: #ffe5f6;
+    overflow: hidden;
+    padding: 5rem 0;
 }
 
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 2rem;
+.gallery-carousel {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.gallery-track {
+    display: flex;
+    animation: scroll var(--carousel-duration, 40s) linear infinite;
+}
+
+.gallery-track:hover {
+    animation-play-state: paused;
 }
 
 .gallery-item {
+    flex: 0 0 300px;
+    margin: 0 15px;
     position: relative;
     overflow: hidden;
     border-radius: 10px;
@@ -187,11 +203,11 @@ body {
 }
 
 .gallery-item:hover {
-    transform: translateY(-10px);
+    transform: scale(1.05);
 }
 
 .gallery-item img {
-    width: 100%;
+    width: 300px;
     height: 300px;
     object-fit: cover;
     display: block;
@@ -211,6 +227,15 @@ body {
 
 .gallery-item:hover .overlay {
     transform: translateY(0);
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
 }
 
 /* Contact Section */

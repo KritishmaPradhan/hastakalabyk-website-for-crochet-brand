@@ -1,3 +1,72 @@
+// Gallery Carousel
+const galleryItems = [
+    { image: 'images/gallery1.png', title: 'Cozy Blanket' },
+    { image: 'images/gallery2.png', title: 'Baby Booties' },
+    { image: 'images/gallery3.png', title: 'Decorative Pillow' }
+];
+
+// Initialize gallery carousel
+function initGalleryCarousel() {
+    const galleryTrack = document.getElementById('galleryTrack');
+    if (!galleryTrack) return;
+
+    // Create gallery items HTML
+    const createGalleryItemHTML = (item) => `
+        <div class="gallery-item">
+            <img src="${item.image}" alt="${item.title}">
+            <div class="overlay">
+                <h3>${item.title}</h3>
+            </div>
+        </div>
+    `;
+
+    // Create items twice for infinite scroll
+    let galleryHTML = '';
+    galleryItems.forEach(item => {
+        galleryHTML += createGalleryItemHTML(item);
+    });
+    galleryItems.forEach(item => {
+        galleryHTML += createGalleryItemHTML(item);
+    });
+
+    galleryTrack.innerHTML = galleryHTML;
+
+    // After images load, measure width of one set and set animation duration
+    const imgs = Array.from(galleryTrack.querySelectorAll('img'));
+    const waitForImages = imgs.map(img => {
+        if (img.complete) return Promise.resolve();
+        return new Promise(res => img.addEventListener('load', res));
+    });
+
+    Promise.all(waitForImages).then(() => {
+        // width of one set = half of track's scrollWidth (we duplicated items twice)
+        const totalTrackWidth = galleryTrack.scrollWidth;
+        const oneSetWidth = totalTrackWidth / 2;
+
+        // Set speed in pixels per second (adjustable)
+        const pxPerSecond = 100; // 100px/s gives a gentle scroll
+        const durationSec = Math.max(10, Math.round(oneSetWidth / pxPerSecond));
+
+        galleryTrack.style.setProperty('--carousel-duration', durationSec + 's');
+    });
+}
+
+// Initialize gallery on page load
+document.addEventListener('DOMContentLoaded', function() {
+    initGalleryCarousel();
+    
+    // Set initial styles for animation
+    const elements = document.querySelectorAll('.about-content, .gallery-item, .contact-container > *');
+    elements.forEach(element => {
+        element.style.opacity = '0';
+        element.style.transform = 'translateY(20px)';
+        element.style.transition = 'opacity 0.5s ease-out, transform 0.5s ease-out';
+    });
+    
+    // Trigger animation on load for elements in viewport
+    setTimeout(animateOnScroll, 100);
+});
+
 // Mobile Menu Toggle
 const navLinks = document.getElementById('navLinks');
 
@@ -30,25 +99,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Form Submission
-const contactForm = document.getElementById('contactForm');
-if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Get form values
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const message = document.getElementById('message').value;
-        
-        // Here you would typically send this data to a server
-        // For now, we'll just show an alert
-        alert(`Thank you for your message, ${name}! We'll get back to you at ${email} soon.`);
-        
-        // Reset form
-        contactForm.reset();
-    });
-}
 
 // Sticky Navigation on Scroll
 window.addEventListener('scroll', function() {
@@ -94,18 +144,5 @@ const animateOnScroll = function() {
         }
     });
 };
-
-// Set initial styles for animation
-document.addEventListener('DOMContentLoaded', function() {
-    const elements = document.querySelectorAll('.about-content, .gallery-item, .contact-container > *');
-    elements.forEach(element => {
-        element.style.opacity = '0';
-        element.style.transform = 'translateY(20px)';
-        element.style.transition = 'opacity 0.5s ease-out, transform 0.5s ease-out';
-    });
-    
-    // Trigger animation on load for elements in viewport
-    setTimeout(animateOnScroll, 300);
-});
 
 window.addEventListener('scroll', animateOnScroll);
