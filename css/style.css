@@ -110,7 +110,30 @@ body {
     border: 3px solid white;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
+.instagram-btn {
+  display: inline-block;
+  padding: 15px 30px;
+  font-size: 12px;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+  border-radius: 50px;
+  background: linear-gradient(45deg, var(--primary-color), var(--secondary-color), var(--accent-color));
+  background-size: 400% 400%;
+  transition: all 0.4s ease;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
 
+.instagram-btn:hover {
+  animation: gradientMove 3s ease infinite;
+  box-shadow: 0 0 20px rgba(255, 105, 180, 0.6), 0 0 30px rgba(255, 105, 180, 0.4);
+}
+
+@keyframes gradientMove {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+}
 /* Sections */
 .section {
     padding: 5rem 10%;
@@ -185,7 +208,7 @@ body {
 
 .gallery-track {
     display: flex;
-    animation: scroll var(--carousel-duration, 40s) linear infinite;
+    animation: scroll var(--carousel-duration, 20s) linear infinite;
 }
 
 .gallery-track:hover {

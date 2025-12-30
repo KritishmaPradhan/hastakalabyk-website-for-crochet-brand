@@ -1,8 +1,14 @@
 // Gallery Carousel
 const galleryItems = [
-    { image: 'images/gallery1.png', title: 'Cozy Blanket' },
-    { image: 'images/gallery2.png', title: 'Baby Booties' },
-    { image: 'images/gallery3.png', title: 'Decorative Pillow' }
+    { image: 'images/gallery4.jpeg', title: 'crochet fruits keychain' },
+    { image: 'images/gallery5.jpeg', title: 'puffed flowers' },
+    { image: 'images/gallery6.jpeg', title: 'flower vine' },
+    { image: 'images/gallery7.jpeg', title: 'red flower brooch' },
+    { image: 'images/gallery8.jpeg', title: 'flower keychain' },
+    { image: 'images/gallery4.jpeg', title: 'crochet fruits keychain' },
+    { image: 'images/gallery9.jpeg', title: 'flower keychain' },
+    { image: 'images/gallery10.jpeg', title: 'lavender keychain' },
+    { image: 'images/gallery11.jpeg', title: 'rose coaster' },
 ];
 
 // Initialize gallery carousel
