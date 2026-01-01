@@ -64,53 +64,67 @@
     </section>
 
     <!-- Contact Section -->
-<section id="contact" class="section contact">
-    <h2>Get In Touch</h2>
-    <div class="contact-container">
-        <div class="contact-info">
-            <h3>Contact Information</h3>
+    <section id="contact" class="section contact">
+        <h2>Get In Touch</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Contact Information</h3>
 
-            <!-- Email Obfuscated (Protects against scraping bots) -->
-            <p><i class="fas fa-envelope"></i>
-                <script>
-                    document.write("<a href='mailto:" + "pradhankritishma" + "@gmail.com'>pradhankritishma@gmail.com</a>");
-                </script>
-            </p>
+                <!-- Email Obfuscated (Protects against scraping bots) -->
+                <p><i class="fas fa-envelope"></i>
+                    <script>
+                        document.write("<a href='mailto:" + "pradhankritishma" + "@gmail.com'>pradhankritishma@gmail.com</a>");
+                    </script>
+                </p>
 
-            <p><i class="fab fa-instagram"></i>
-                <a href="https://www.instagram.com/hastakala_by_K/" target="_blank">@hastakala_by_K</a>
-            </p>
+                <p><i class="fab fa-instagram"></i>
+                    <a href="https://www.instagram.com/hastakala_by_K/" target="_blank">@hastakala_by_K</a>
+                </p>
+            </div>
+
+            <form action="https://formsubmit.co/pradhankritishma@gmail.com" method="POST" id="contactForm" class="contact-form">
+                <!-- Honeypot field (hidden) -->
+                <input type="hidden" name="_honey">
+
+                <!-- Enable captcha -->
+                <input type="hidden" name="_captcha" value="true">
+
+                <!-- Redirect to thank-you page -->
+                <input type="hidden" name="_next" value="https://kritishmapradhan.github.io/hastakalabyk-website-for-crochet-brand/">
+
+                <!-- Restrict to your site (free version will check this client-side) -->
+                <input type="hidden" name="_url" value="https://kritishmapradhan.github.io/hastakalabyk-website-for-crochet-brand/">
+
+                <!-- Name Field -->
+                <div class="form-group">
+                    <input type="text" name="name" placeholder="Your Name" required autocomplete="name">
+                </div>
+            
+                <!-- Email Field -->
+                <div class="form-group">
+                    <input type="email" name="email" placeholder="Your Email" required autocomplete="email">
+                </div>
+            
+                <!-- Message Field -->
+                <div class="form-group">
+                    <textarea name="message" placeholder="Your Message" required autocomplete="off"></textarea>
+                </div>  
+            
+                <!-- Consent Checkbox -->
+                <div class="form-group consent">
+                    <label>
+                        <input type="checkbox" required autocomplete="off">
+                        I agree that my submitted information will be sent to the owner of this website for contact purposes only.
+                    </label>
+                </div>
+            
+                <!-- Submit Button -->
+                <div class="form-group">
+                    <button type="submit" class="btn">Send Message</button>
+                </div>
+            </form>
         </div>
-
-        <form action="https://formsubmit.co/pradhankritishma@gmail.com" method="POST" id="contactForm" class="contact-form">
-            <!-- Honeypot field -->
-            <input type="text" name="_honey" style="display:none">
-
-            <!-- Enable captcha -->
-            <input type="hidden" name="_captcha" value="true">
-
-            <!-- Redirect to thank-you page -->
-            <input type="hidden" name="_next" value="https://kritishmapradhan.github.io/hastakalabyk-website-for-crochet-brand/thank-you.html">
-
-            <!-- Restrict to your site (free version will check this client-side) -->
-            <input type="hidden" name="_url" value="https://kritishmapradhan.github.io/hastakalabyk-website-for-crochet-brand/">
-
-            <!-- Your fields -->
-            <input type="text" name="name" placeholder="Your Name" required>
-            <input type="email" name="email" placeholder="Your Email" required>
-            <textarea name="message" placeholder="Your Message" required></textarea>
-
-            <!-- Consent -->
-            <label>
-                <input type="checkbox" required>
-                I agree that my submitted information will be sent to the owner of this website for contact purposes only.
-            </label>
-
-            <button type="submit">Send Message</button>
-        </form>
-
-    </div>
-</section>
+    </section>
 
     <!-- Footer -->
     <footer>
