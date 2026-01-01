@@ -208,7 +208,8 @@ body {
 
 .gallery-track {
     display: flex;
-    animation: scroll var(--carousel-duration, 20s) linear infinite;
+    animation: scroll var(--carousel-duration, 60s) linear infinite;
+    width: fit-content;
 }
 
 .gallery-track:hover {

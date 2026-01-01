@@ -26,14 +26,19 @@ function initGalleryCarousel() {
         </div>
     `;
 
-    // Create items twice for infinite scroll
+    // Create items multiple times to ensure continuous scrolling
     let galleryHTML = '';
-    galleryItems.forEach(item => {
-        galleryHTML += createGalleryItemHTML(item);
-    });
-    galleryItems.forEach(item => {
-        galleryHTML += createGalleryItemHTML(item);
-    });
+    // Calculate how many repeats needed based on screen width
+    // Each item is 330px wide (300px + 30px margin)
+    const itemWidth = 330;
+    const screenWidth = window.innerWidth;
+    const itemsNeeded = Math.ceil(screenWidth / itemWidth) + 4; // Extra items for smooth transition
+    
+    for (let i = 0; i < itemsNeeded; i++) {
+        galleryItems.forEach(item => {
+            galleryHTML += createGalleryItemHTML(item);
+        });
+    }
 
     galleryTrack.innerHTML = galleryHTML;
 
