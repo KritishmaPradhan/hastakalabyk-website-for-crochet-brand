@@ -64,33 +64,58 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="section contact">
-        <h2>Get In Touch</h2>
-        <div class="contact-container">
-            <div class="contact-info">
-                <h3>Contact Information</h3>
-                <p><i class="fas fa-envelope"></i> pradhankritishma@gmail.com</p>
-                <p><i class="fab fa-instagram"></i> <a href="https://www.instagram.com/hastakala_by_K/" target="_blank">@hastakala_by_K</a></p>
-            </div>
-            <form action="https://formsubmit.co/pradhankritishma@gmail.com" method="POST" id="contactForm" class="contact-form">
-                <div class="form-group">
-                    <input type="text" id="name" name="name" placeholder="Your Name" required>
-                </div>
-                <div class="form-group">
-                    <input type="email" id="email" name="email" placeholder="Your Email" required>
-                </div>
-                <div class="form-group">
-                    <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
-                </div>
-                <button type="submit" class="btn">Send Message</button>
-            </form>
+<section id="contact" class="section contact">
+    <h2>Get In Touch</h2>
+    <div class="contact-container">
+        <div class="contact-info">
+            <h3>Contact Information</h3>
+
+            <!-- Email Obfuscated (Protects against scraping bots) -->
+            <p><i class="fas fa-envelope"></i>
+                <script>
+                    document.write("<a href='mailto:" + "pradhankritishma" + "@gmail.com'>pradhankritishma@gmail.com</a>");
+                </script>
+            </p>
+
+            <p><i class="fab fa-instagram"></i>
+                <a href="https://www.instagram.com/hastakala_by_K/" target="_blank">@hastakala_by_K</a>
+            </p>
         </div>
-    </section>
+
+        <form action="https://formsubmit.co/pradhankritishma@gmail.com" method="POST" id="contactForm" class="contact-form">
+            <!-- Honeypot field -->
+            <input type="text" name="_honey" style="display:none">
+
+            <!-- Enable captcha -->
+            <input type="hidden" name="_captcha" value="true">
+
+            <!-- Redirect to thank-you page -->
+            <input type="hidden" name="_next" value="https://kritishmapradhan.github.io/hastakalabyk-website-for-crochet-brand/thank-you.html">
+
+            <!-- Restrict to your site (free version will check this client-side) -->
+            <input type="hidden" name="_url" value="https://kritishmapradhan.github.io/hastakalabyk-website-for-crochet-brand/">
+
+            <!-- Your fields -->
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" placeholder="Your Message" required></textarea>
+
+            <!-- Consent -->
+            <label>
+                <input type="checkbox" required>
+                I agree that my submitted information will be sent to the owner of this website for contact purposes only.
+            </label>
+
+            <button type="submit">Send Message</button>
+        </form>
+
+    </div>
+</section>
 
     <!-- Footer -->
     <footer>
         <div class="footer-content">
-            <p>© 2026 Hastakala By K — All rights reserved. Licensed under CC BY-NC 4.0.</p>
+            <p>© 2026 Hastakala by K — All rights reserved. Licensed under CC BY-NC 4.0.</p>
             <div class="social-links">
                 <a href="https://www.instagram.com/hastakala_by_K/" target="_blank"><i class="fab fa-instagram"></i></a>
             </div>
