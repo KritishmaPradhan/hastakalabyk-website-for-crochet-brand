@@ -65,6 +65,7 @@ function initGalleryCarousel() {
 // Initialize gallery on page load
 document.addEventListener('DOMContentLoaded', function() {
     initGalleryCarousel();
+    initHeroSparkles();
     
     // Set initial styles for animation
     const elements = document.querySelectorAll('.about-content, .gallery-item, .contact-container > *');
@@ -157,3 +158,46 @@ const animateOnScroll = function() {
 };
 
 window.addEventListener('scroll', animateOnScroll);
+
+// Hero sparkle effect on hover
+function initHeroSparkles() {
+    const hero = document.querySelector('.hero');
+    if (!hero) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (window.matchMedia('(hover: none)').matches) return;
+
+    const layer = document.createElement('div');
+    layer.className = 'hero-sparkle-layer';
+    hero.appendChild(layer);
+
+    let lastSpawn = 0;
+    const spawnInterval = 35;
+
+    const spawnSparkle = (event) => {
+        const now = performance.now();
+        if (now - lastSpawn < spawnInterval) return;
+        lastSpawn = now;
+
+        const rect = hero.getBoundingClientRect();
+        const x = event.clientX - rect.left;
+        const y = event.clientY - rect.top;
+
+        const sparkle = document.createElement('span');
+        sparkle.className = 'hero-sparkle';
+        sparkle.style.left = `${x}px`;
+        sparkle.style.top = `${y}px`;
+        sparkle.style.setProperty('--sparkle-drift-x', `${(Math.random() * 20 - 10).toFixed(1)}px`);
+        sparkle.style.setProperty('--sparkle-drift-y', `${(-18 - Math.random() * 18).toFixed(1)}px`);
+        sparkle.style.animationDuration = `${520 + Math.floor(Math.random() * 340)}ms`;
+
+        layer.appendChild(sparkle);
+
+        if (layer.childElementCount > 80) {
+            layer.removeChild(layer.firstElementChild);
+        }
+
+        sparkle.addEventListener('animationend', () => sparkle.remove(), { once: true });
+    };
+
+    hero.addEventListener('mousemove', spawnSparkle);
+}
