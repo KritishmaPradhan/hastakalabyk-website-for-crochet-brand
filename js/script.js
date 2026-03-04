@@ -66,6 +66,7 @@ function initGalleryCarousel() {
 document.addEventListener('DOMContentLoaded', function() {
     initGalleryCarousel();
     initHeroSparkles();
+    initExploreWorkToggle();
     
     // Set initial styles for animation
     const elements = document.querySelectorAll('.about-content, .gallery-item, .contact-container > *');
@@ -200,4 +201,76 @@ function initHeroSparkles() {
     };
 
     hero.addEventListener('mousemove', spawnSparkle);
+}
+
+// Explore Work toggle section
+function initExploreWorkToggle() {
+    const toggleButton = document.getElementById('exploreWorkToggle');
+    const panel = document.getElementById('exploreWorkPanel');
+    const grid = document.getElementById('exploreWorkGrid');
+
+    if (!toggleButton || !panel || !grid) return;
+
+    const exploreItems = [
+        { type: 'image', src: 'images/gallery4.jpeg', alt: 'crochet fruits keychain' },
+        { type: 'image', src: 'images/gallery5.jpeg', alt: 'puffed flowers' },
+        { type: 'image', src: 'images/gallery6.jpeg', alt: 'flower vine' },
+        { type: 'image', src: 'images/gallery7.jpeg', alt: 'red flower brooch' },
+        { type: 'image', src: 'images/gallery8.jpeg', alt: 'flower keychain' },
+        { type: 'image', src: 'images/gallery9.jpeg', alt: 'flower keychain set' },
+        { type: 'image', src: 'images/gallery10.jpeg', alt: 'lavender keychain' },
+        { type: 'image', src: 'images/gallery11.jpeg', alt: 'rose coaster' },
+        { type: 'image', src: 'images/gallery9.jpeg', alt: 'flower keychain set' },
+        { type: 'image', src: 'images/gallery10.jpeg', alt: 'lavender keychain' },
+        { type: 'image', src: 'images/gallery11.jpeg', alt: 'rose coaster' },
+    ];
+
+    const renderItems = () => {
+        grid.innerHTML = exploreItems.map((item) => {
+            if (item.type === 'image') {
+                return `
+                    <article class="explore-item">
+                        <img src="${item.src}" alt="${item.alt}">
+                    </article>
+                `;
+            }
+
+            return `
+                <article class="explore-item">
+                    <div class="explore-placeholder">${item.label}</div>
+                </article>
+            `;
+        }).join('');
+    };
+
+    const animateIn = () => {
+        const cards = Array.from(grid.querySelectorAll('.explore-item'));
+        cards.forEach((card, index) => {
+            setTimeout(() => card.classList.add('show'), index * 70);
+        });
+    };
+
+    toggleButton.addEventListener('click', () => {
+        const isOpen = panel.classList.contains('is-open');
+
+        if (isOpen) {
+            panel.classList.remove('is-open');
+            panel.setAttribute('aria-hidden', 'true');
+            toggleButton.setAttribute('aria-expanded', 'false');
+
+            setTimeout(() => {
+                if (!panel.classList.contains('is-open')) {
+                    grid.innerHTML = '';
+                }
+            }, 380);
+            return;
+        }
+
+        renderItems();
+        panel.classList.add('is-open');
+        panel.setAttribute('aria-hidden', 'false');
+        toggleButton.setAttribute('aria-expanded', 'true');
+
+        requestAnimationFrame(animateIn);
+    });
 }
