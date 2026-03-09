@@ -212,17 +212,20 @@ function initExploreWorkToggle() {
     if (!toggleButton || !panel || !grid) return;
 
     const exploreItems = [
-        { type: 'image', src: 'images/gallery4.jpeg', alt: 'crochet fruits keychain' },
-        { type: 'image', src: 'images/gallery5.jpeg', alt: 'puffed flowers' },
-        { type: 'image', src: 'images/gallery6.jpeg', alt: 'flower vine' },
-        { type: 'image', src: 'images/gallery7.jpeg', alt: 'red flower brooch' },
-        { type: 'image', src: 'images/gallery8.jpeg', alt: 'flower keychain' },
-        { type: 'image', src: 'images/gallery9.jpeg', alt: 'flower keychain set' },
-        { type: 'image', src: 'images/gallery10.jpeg', alt: 'lavender keychain' },
-        { type: 'image', src: 'images/gallery11.jpeg', alt: 'rose coaster' },
-        { type: 'image', src: 'images/gallery9.jpeg', alt: 'flower keychain set' },
-        { type: 'image', src: 'images/gallery10.jpeg', alt: 'lavender keychain' },
-        { type: 'image', src: 'images/gallery11.jpeg', alt: 'rose coaster' },
+        { type: 'image', src: 'images/gallery12.jpeg', alt: 'kalesi aurat clip' },
+        { type: 'image', src: 'images/gallery13.jpeg', alt: 'cute chicken' },
+        { type: 'image', src: 'images/gallery14.jpeg', alt: 'puffed sunflower' },
+        { type: 'image', src: 'images/gallery15.jpeg', alt: 'white pink daisy' },
+        { type: 'image', src: 'images/gallery16.jpeg', alt: 'purple puffed' },
+        { type: 'image', src: 'images/gallery17.jpeg', alt: 'pink puffed' },
+        { type: 'image', src: 'images/gallery18.jpeg', alt: 'blue puffed' },
+        { type: 'image', src: 'images/gallery19.jpeg', alt: 'twin octo' },
+        { type: 'image', src: 'images/gallery20.jpeg', alt: 'happy sad octo' },
+        { type: 'image', src: 'images/gallery21.jpeg', alt: 'white daisy' },
+        { type: 'image', src: 'images/gallery22.jpeg', alt: 'sunflower' },
+        { type: 'image', src: 'images/gallery23.jpeg', alt: 'bow pair' },
+        { type: 'image', src: 'images/gallery24.jpeg', alt: 'flower vine white' },
+        { type: 'image', src: 'images/gallery25.jpeg', alt: 'rose' },
     ];
 
     const renderItems = () => {
