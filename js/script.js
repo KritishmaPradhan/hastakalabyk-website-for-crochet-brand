@@ -66,7 +66,9 @@ function initGalleryCarousel() {
 document.addEventListener('DOMContentLoaded', function() {
     initGalleryCarousel();
     initHeroSparkles();
-    initExploreWorkToggle();
+    if (typeof initExploreWorkToggle === 'function') {
+        initExploreWorkToggle();
+    }
     
     // Set initial styles for animation
     const elements = document.querySelectorAll('.about-content, .gallery-item, .contact-container > *');
@@ -279,15 +281,18 @@ function initHeroSparkles() {
 // }
 
 // swipe gallery carousel
-let next = document.querySelector('.next')
-let prev = document.querySelector('.prev')
+const next = document.querySelector('.next');
+const prev = document.querySelector('.prev');
+const slide = document.querySelector('.slide');
 
-next.addEventListener('click', function(){
-    let items = document.querySelectorAll('.item')
-    document.querySelector('.slide').appendChild(items[0])
-})
+if (next && prev && slide) {
+    next.addEventListener('click', function(){
+        const items = slide.querySelectorAll('.item');
+        if (items.length) slide.appendChild(items[0]);
+    });
 
-prev.addEventListener('click', function(){
-    let items = document.querySelectorAll('.item')
-    document.querySelector('.slide').prepend(items[items.length - 1]) // here the length of items = 6
-})
+    prev.addEventListener('click', function(){
+        const items = slide.querySelectorAll('.item');
+        if (items.length) slide.prepend(items[items.length - 1]); // here the length of items = 6
+    });
+}

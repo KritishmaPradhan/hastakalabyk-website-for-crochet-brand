@@ -563,6 +563,7 @@ footer {
     }
 }
 
+
 .explore-work-panel {
     margin-top: 1rem;
     max-height: 0;
@@ -666,9 +667,9 @@ footer {
 
 .containerc .slide .item{
     width: 200px;
-    height: 300px;
+    height: 200px;
     position: absolute;
-    top: 70%;
+    top: 80%;
     transform: translate(0, -50%);
     border-radius: 20px;
     box-shadow: 0 0 50px #f8f5f5;
@@ -690,6 +691,7 @@ footer {
     background-repeat: no-repeat;
     background-position: left center;
     border-radius: 40px;
+    box-shadow:0 30px 50px #505050;
 }
 
 
